@@ -23,11 +23,11 @@ def Intergenic(chromosome):
 
     Start = Positive.iloc[:,2] + 1
     Start = Start.to_list()
-    Start.pop(0)
+    Start.pop(-1)
 
     End = Positive.iloc[:,1] - 1
     End = End.to_list()
-    End.pop(-1)
+    End.pop(0)
 
     Gene = ['Intergenic ' + str(Positive.iloc[i,3]) + ' ~ ' + str(Positive.iloc[i+1,3]) for i in range(Positive.shape[0]-1)]
 
@@ -42,11 +42,11 @@ def Intergenic(chromosome):
 
     Start = Negative.iloc[:,2] + 1
     Start = Start.to_list()
-    Start.pop(0)
+    Start.pop(-1)
 
     End = Negative.iloc[:,1] - 1
     End = End.to_list()
-    End.pop(-1)
+    End.pop(0)
 
     Gene = ['Intergenic ' + str(Negative.iloc[i,3]) + ' ~ ' + str(Negative.iloc[i+1,3]) for i in range(Negative.shape[0]-1)]
 
