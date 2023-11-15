@@ -4,7 +4,7 @@ import pandas as pd
 import glob
 import concurrent.futures
 #------------------------------------------------------------------------#
-Coverage = glob.glob('Results/02.Normalized/*txt')
+Coverage = glob.glob('Results/01.Normalized/*txt')
 Coverage.sort()
 #------------------------------------------------------------------------#
 def trimming(Cov):
