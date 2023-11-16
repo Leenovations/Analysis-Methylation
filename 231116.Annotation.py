@@ -13,10 +13,10 @@ parser.add_argument('1', metavar='<bed>', help='Select bed file for position ann
 # parser.add_argument('2', metavar='<CPU>', help='Set CPU core number')
 args = parser.parse_args()
 #-------------------------------------------------------------------------------------#
-if os.path.isdir('CpG/03.Annotation'):
+if os.path.isdir('CpG/03.Annotated'):
     pass
 else:
-    os.makedirs('CpG/03.Annotation', exist_ok=False)
+    os.makedirs('CpG/03.Annotated', exist_ok=False)
 #-------------------------------------------------------------------------------------#
 Coverage = glob.glob('CpG/02.bin/*cov')
 #-------------------------------------------------------------------------------------#
