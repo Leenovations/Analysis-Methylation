@@ -41,7 +41,7 @@ def Calculate():
                 Intersect = pySubset.join(pyMerged).df
                 Intersect = Intersect.drop(['Start_b', 'End_b'], axis=1)
                 Intersect = Intersect.astype({'Chromosome': 'str', 'Start' : 'int', 'End' : 'int', 'Gene': 'str'}) 	
-                Intersect = round(Intersect.groupby(['Chromosome', 'Start', 'End', 'Gene']).mean(), 3)
+                Intersect = round(Intersect.groupby(['Chromosome', 'Start', 'End', 'Gene']).mean(), 2)
                 Intersect = Intersect.fillna('NaN')
                 Data_list.append(Intersect)
             else:   

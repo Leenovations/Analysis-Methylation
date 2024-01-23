@@ -11,9 +11,9 @@ parser = argparse.ArgumentParser(description="Code Usage")
 parser.add_argument("1", metavar="<Sample Group and number>", nargs="+", help='Write Sample Group and name. ex)A 12 B 12 ...')
 args=parser.parse_args()
 #-----------------------------------------------------------#
-Group = sys.argv[1:]
-group = Group[0::2]
-number = Group[1::2]
+Info = sys.argv[1:]
+group = Info[0::2]
+number = Info[1::2]
 
 Group = [list(map(lambda num: f'{gp}_{num}', list(range(1, int(num)+1)))) for num, gp in zip(number, group)]
 Group = list(chain(*Group))
@@ -31,5 +31,6 @@ Table.to_excel('../Results/Information.xlsx', sheet_name='Sample Info', index=Fa
 def rename(File):
     command = f'mv {File} {Matching[File]}.cov'
     os.system(command)
-#-----------------------------------------------------------#
+
 list(map(rename, file_list))
+#-----------------------------------------------------------#

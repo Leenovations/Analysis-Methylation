@@ -29,13 +29,14 @@ def Intergenic(chromosome):
     End = End.to_list()
     End.pop(0)
 
-    Gene = ['Intergenic ' + str(Positive.iloc[i,3]) + ' ~ ' + str(Positive.iloc[i+1,3]) for i in range(Positive.shape[0]-1)]
+    Gene = ['Intergenic_' + str(Positive.iloc[i,3]) + '_' + str(Positive.iloc[i+1,3]) for i in range(Positive.shape[0]-1)]
 
     Positive = pd.DataFrame({'Chromosome' : chromosome,
                              'Start' : Start,
                              'End' : End,
-                             'Strand' : '+',
-                             'GeneSymbol' : Gene})
+                             'Gene' : 'NA',
+                             'Region' : Gene,
+                             'Strand' : '+'})
     BED.append(Positive)
     #------------------------------------------------------------------------------------------#
     Negative = bed[(bed.iloc[:, 0] == chromosome) & (bed.iloc[:, 4] == '-')]
@@ -48,17 +49,18 @@ def Intergenic(chromosome):
     End = End.to_list()
     End.pop(0)
 
-    Gene = ['Intergenic ' + str(Negative.iloc[i,3]) + ' ~ ' + str(Negative.iloc[i+1,3]) for i in range(Negative.shape[0]-1)]
+    Gene = ['Intergenic_' + str(Negative.iloc[i,3]) + '_' + str(Negative.iloc[i+1,3]) for i in range(Negative.shape[0]-1)]
 
     Negative = pd.DataFrame({'Chromosome' : chromosome,
                              'Start' : Start,
                              'End' : End,
-                             'Strand' : '-',
-                             'GeneSymbol' : Gene})
+                             'Gene' : 'NA',
+                             'Region' : Gene,
+                             'Strand' : '-'})
     BED.append(Negative)
 
 list(map(Intergenic, Chromosome))
-
+#------------------------------------------------------------------------------------------#
 Total_Intergenic_bed = pd.concat(BED)
 Total_Intergenic_bed = Total_Intergenic_bed.sort_values(['Chromosome', 'Start', 'End'])
 Total_Intergenic_bed.to_csv('/media/src/hg19/01.Methylation/00.Bed/NCBI.RefSeq.Selected.Intergenic.bed',

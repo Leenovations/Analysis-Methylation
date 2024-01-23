@@ -47,8 +47,10 @@ def Meth(cov):
                      sep='\t',
                      index=False)
 
-if __name__ == '__main__':
-    num_threads = len(File)
-    with concurrent.futures.ThreadPoolExecutor(max_workers=num_threads) as executor:
-        executor.map(Meth, File)
+list(map(Meth, File))
+
+# if __name__ == '__main__':
+#     num_threads = 30
+#     with concurrent.futures.ThreadPoolExecutor(max_workers=num_threads) as executor:
+#         executor.map(Meth, File)
 #-------------------------------------------------------------------------------------#
